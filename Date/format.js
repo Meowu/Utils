@@ -5,7 +5,7 @@
  * return String
  * 可以输入10位或者13位的数字或数字字符串。
  */
-function formatDate(timestamp) {
+export default function formatDate(timestamp) {
   if (!Number(timestamp)) {
     throw new Error("parameter must be a Number.")
   }
@@ -23,7 +23,6 @@ function formatDate(timestamp) {
   const hours = newDate.getHours()
   const minutes = newDate.getMinutes()
   
-  console.log(minutes)
   const time_str = `${padZero(year)}-${padZero(month)}-${padZero(date)} ${padZero(hours)}:${padZero(minutes)}`
   
   return time_str

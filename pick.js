@@ -7,7 +7,7 @@
  * example pick({a: 1, b: 2, c: 3}, 'a', 'c')
  * => {a: 1, c: 3}
  */
-function pick(object, ...props) {
+export default function pick(object, ...props) {
   if (Object.prototype.toString.call(object) !== "[object Object]") {
     throw new Error("It must be given an object.")
   }
