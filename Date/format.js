@@ -1,11 +1,11 @@
 
 /**
- * 把时间戳格式化为 yyyy-MM-dd HH-mm 格式的字符串
+ * 把时间戳格式化为 yyyy-MM-dd HH-mm 格式的字符串, 可选择输入yyyy-MM-dd取年月日，HH:mm取时分, MM-dd取月日。
  * @param {Number | String} timestamp
  * return String
  * 可以输入10位或者13位的数字或数字字符串。
  */
-export default function formatDate(timestamp) {
+export default function formatDate(timestamp, format='yyyy-MM-dd HH:mm') {
   if (!Number(timestamp)) {
     throw new Error("parameter must be a Number.")
   }
@@ -23,7 +23,17 @@ export default function formatDate(timestamp) {
   const hours = newDate.getHours()
   const minutes = newDate.getMinutes()
   
-  const time_str = `${padZero(year)}-${padZero(month)}-${padZero(date)} ${padZero(hours)}:${padZero(minutes)}`
-  
-  return time_str
+  switch (format) {
+    case 'yyyy-MM-dd':
+      return `${padZero(year)}-${padZero(month)}-${padZero(date)}`
+      break;
+    case 'MM-dd':
+      return `${padZero(month)}-${padZero(date)}`
+      break;
+    case 'HH:mm':
+      return `${padZero(hours)}:${padZero(minutes)}`
+      break
+    default:
+      return `${padZero(year)}-${padZero(month)}-${padZero(date)} ${padZero(hours)}:${padZero(minutes)}`
+  }
 }
