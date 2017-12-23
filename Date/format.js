@@ -10,7 +10,7 @@ export default function formatDate(timestamp, format='yyyy-MM-dd HH:mm') {
     throw new Error("parameter must be a Number.")
   }
   const len = timestamp.toString().length
-  if (len !== 10 && len !== 13) { // 这里必须是 && 并集。
+  if (len !== 10 || len !== 13) { // 这里必须是 && 并集。
     throw new Error('Number expected to be 10 or 13 at length.')
   }
   const time = Number(timestamp).toString().length === 10 ? timestamp*1000 : timestamp
